@@ -1,0 +1,102 @@
+// !$*UTF8*$!
+{
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Release;
+		activeExecutable = D49F853D103949D30010E69A /* EditorClient */;
+		activeTarget = 8D1107260486CEB800E47090 /* EditorClient */;
+		addToTargets = (
+			8D1107260486CEB800E47090 /* EditorClient */,
+		);
+		codeSenseManager = D49F8543103949F20010E69A /* Code sense */;
+		executables = (
+			D49F853D103949D30010E69A /* EditorClient */,
+		);
+		perUserDictionary = {
+			PBXPerProjectTemplateStateSaveDate = 272196597;
+			PBXWorkspaceStateSaveDate = 272196597;
+		};
+		sourceControlManager = D49F8542103949F20010E69A /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	7790198E0C07548A00326F66 /* EditorClientAppDelegate.py */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 430}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 352}";
+			sepNavWindowFrame = "{{263, 26}, {750, 558}}";
+		};
+	};
+	8D1107260486CEB800E47090 /* EditorClient */ = {
+		activeExec = 0;
+		executables = (
+			D49F853D103949D30010E69A /* EditorClient */,
+		);
+	};
+	8D1107310486CEB800E47090 /* Info.plist */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{38, 444}, {750, 558}}";
+		};
+	};
+	D49DF2C7103967020045222C /* fourcc.py */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 430}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 145}";
+			sepNavWindowFrame = "{{15, 465}, {750, 558}}";
+		};
+	};
+	D49F853D103949D30010E69A /* EditorClient */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = EditorClient;
+		savedGlobals = {
+		};
+		sourceDirectories = (
+		);
+	};
+	D49F8542103949F20010E69A /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+	};
+	D49F8543103949F20010E69A /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	D49F854410394A820010E69A /* EditorClientWorker.py */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 430}}";
+			sepNavSelRange = "{240, 0}";
+			sepNavVisRange = "{0, 240}";
+			sepNavWindowFrame = "{{38, 444}, {750, 558}}";
+		};
+	};
+	D49F854910394DFF0010E69A /* ODBEditorSuite.py */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 430}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 153}";
+			sepNavWindowFrame = "{{84, 402}, {750, 558}}";
+		};
+	};
+}
