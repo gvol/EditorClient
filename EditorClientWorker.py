@@ -21,7 +21,14 @@ from Carbon import AE
 from Carbon import AppleEvents
 import Carbon.File
 
-EDITOR_COMMAND = "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -c -a '' +%(linenum)s '%(filename)s'"
+if os.getenv('EDITOR_CLIENT_COMMAND'):
+    EDITOR_COMMAND = os.getenv('EDITOR_CLIENT_COMMAND')
+elif os.getenv('EMACSCLIENT'):
+    EDITOR_COMMAND = "%s -c -a '%s' +%%(linenum)s '%%(filename)s'" % (os.getenv('EMACSCLIENT'), os.getenv('EMACS'))
+else:
+    EDITOR_COMMAND = "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -c -a '' +%(linenum)s '%(filename)s'"
+
+NSLog('EDITOR_COMMAND: %s', EDITOR_COMMAND )
 
 class EditorClientWorker(NSThread):
     def initWithODB(self, path, linenum=0, odb_app=None, odb_token=None):
@@ -42,14 +49,14 @@ class EditorClientWorker(NSThread):
         subprocess.call(EDITOR_COMMAND % {'linenum': self.linenum, 'filename': self.path},
                         shell=True, stdin=stdin, stdout=stdout, stderr=stdout)
         #os.system(EDITOR_COMMAND % {'linenum':self.linenum, 'filename':self.path})
-                        
+
         # Send the "file closed" ODB event.
         if self.odb_app:
             NSLog("sending file closed event to %s, %s" % (self.odb_app, type(self.odb_app)))
-            
+
             target = AE.AECreateDesc(AppleEvents.typeApplSignature, self.odb_app[::-1])  # For strange endianness reasons, have to reverse this
             event = AE.AECreateAppleEvent(kODBEditorSuite, kAEClosedFile, target, AppleEvents.kAutoGenerateReturnID, AppleEvents.kAnyTransactionID)
-            
+
             if self.odb_token:
                 event.AEPutParamDesc(keySenderToken, pack(self.odb_token, typeWildcard))
 
@@ -57,7 +64,7 @@ class EditorClientWorker(NSThread):
             event.AEPutParamDesc(AppleEvents.keyDirectObject, pack(fsr))
 
             event.AESend(AppleEvents.kAENoReply, AppleEvents.kAENormalPriority, AppleEvents.kAEDefaultTimeout)
-                
+
             #evt_app = NSAppleEventDescriptor.descriptorWithTypeCode_(fourcc(self.odb_app))
             #evt = NSAppleEventDescriptor.appleEventWithEventClass_eventID_targetDescriptor_returnID_transactionID_(fourcc(kODBEditorSuite),
             #                                                                                                       fourcc(kAEClosedFile),
@@ -74,4 +81,4 @@ class EditorClientWorker(NSThread):
 
         NSLog("editing thread finished for %s" % self.path)
         del pool
-        
+
