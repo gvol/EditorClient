@@ -1,3 +1,5 @@
+/EditorClient.xcodeproj/project.xcworkspace/*
+/EditorClient.xcodeproj/xcuserdata/*
 build/*
 *.pbxuser
 *.mode1v3
