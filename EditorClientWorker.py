@@ -42,11 +42,11 @@ class EditorClientWorker(NSThread):
     def main(self):
         pool = NSAutoreleasePool.alloc().init()
         NSLog("editing thread started for %s" % self.path)
-        NSLog("shell command: %@", EDITOR_COMMAND % {'linenum': self.linenum, 'filename': self.path})
+        NSLog("shell command: %@", EDITOR_COMMAND % {'linenum': self.linenum, 'filename': self.path.replace("'","'\"'\"'")})
 
         stdin = open('/dev/null','r')
         stdout = open('/dev/null','w')
-        subprocess.call(EDITOR_COMMAND % {'linenum': self.linenum, 'filename': self.path},
+        subprocess.call(EDITOR_COMMAND % {'linenum': self.linenum, 'filename': self.path.replace("'","'\"'\"'")},
                         shell=True, stdin=stdin, stdout=stdout, stderr=stdout)
         #os.system(EDITOR_COMMAND % {'linenum':self.linenum, 'filename':self.path})
 
