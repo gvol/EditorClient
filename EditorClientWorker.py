@@ -60,7 +60,7 @@ class EditorClientWorker(NSThread):
             if self.odb_token:
                 event.AEPutParamDesc(keySenderToken, pack(self.odb_token, typeWildcard))
 
-            fsr = Carbon.File.FSPathMakeRef(self.path)[0]
+            fsr = Carbon.File.FSPathMakeRef(self.path)[0].encode('utf-8')
             event.AEPutParamDesc(AppleEvents.keyDirectObject, pack(fsr))
 
             event.AESend(AppleEvents.kAENoReply, AppleEvents.kAENormalPriority, AppleEvents.kAEDefaultTimeout)
